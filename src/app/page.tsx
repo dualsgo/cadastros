@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
@@ -44,6 +45,18 @@ export default function Home() {
 
     return ((identified / total) * 100).toFixed(2);
   }, [totalSales, identifiedSales]);
+
+  const motivationalMessage = useMemo(() => {
+    const p = parseFloat(percentage);
+    if (isNaN(p) || p < 0 || (totalSales === '' && identifiedSales === '')) return '';
+    if (p === 0) return "Vamos começar! O primeiro passo é o mais importante. 🚀";
+    if (p > 0 && p <= 25) return "Continue assim! Cada cadastro conta. 💪";
+    if (p > 25 && p <= 50) return "Bom trabalho! Você está na metade do caminho. 🔥";
+    if (p > 50 && p <= 75) return "Excelente! Seus resultados estão decolando. ✈️";
+    if (p > 75 && p < 100) return "Incrível! Você está quase lá. 🌟";
+    if (p >= 100) return "Perfeito! Você atingiu a meta! 🏆🎉";
+    return '';
+  }, [percentage, totalSales, identifiedSales]);
 
   useEffect(() => {
     const total = parseFloat(totalSales);
@@ -98,11 +111,11 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-background p-4 sm:p-6 md:p-8">
       <Card className="w-full max-w-md shadow-2xl">
         <CardHeader className="text-center p-4">
-          <CardTitle className="text-2xl font-headline font-bold">Acompanhamento cadastros</CardTitle>
-          <CardDescription className="text-sm">Acompanhamento diário de resultados</CardDescription>
+          <CardTitle className="text-xl sm:text-2xl font-headline font-bold">Acompanhamento cadastros</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">Acompanhamento diário de resultados</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4 p-4">
           <div className="space-y-3">
@@ -159,6 +172,7 @@ export default function Home() {
           <div className="text-center bg-card p-3 rounded-lg border">
             <p className="text-sm text-muted-foreground">Seu aproveitamento de vendas identificadas é de:</p>
             <p className="text-4xl font-bold text-primary drop-shadow-sm">{percentage}%</p>
+             {motivationalMessage && <p className="text-sm text-muted-foreground mt-1 animate-pulse">{motivationalMessage}</p>}
           </div>
 
           <Button
