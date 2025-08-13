@@ -51,32 +51,32 @@ export default function Home() {
     if (isNaN(p) || p < 0 || totalSales === '' || identifiedSales === '') return '';
 
     const messages = [
-      "Vamos começar! O primeiro passo é o mais importante. 🚀", // 0%
-      "Isso! O primeiro de muitos. 🌱", // 5%
-      "Continue assim! Cada cadastro conta. 💪", // 10%
-      "Você está pegando o jeito! ✨", // 15%
-      "Ótimo começo! Mantenha o foco. 👀", // 20%
-      "Bom trabalho! Você está no caminho certo. 🔥", // 25%
-      "Um terço do caminho! 🎉", // 30%
-      "Quase na metade! Não desista agora. 🏃‍♂️", // 35%
-      "Continue brilhando! 🌟", // 40%
-      "Você é imparável! 👊", // 45%
-      "Metade do caminho! Você consegue. 🎯", // 50%
-      "Impressionante! Continue com o ótimo trabalho. 🤩", // 55%
-      "Seus resultados estão decolando! ✈️", // 60%
-      "Mais um pouco e você chega lá! 🙌", // 65%
-      "Uau! Que desempenho. 💥", // 70%
-      "Excelente! Você está fazendo a diferença. 📈", // 75%
-      "Quase lá! Falta muito pouco. 🙏", // 80%
-      "Na reta final! Capricha! 🏁", // 85%
-      "Incrível! Você está prestes a bater a meta. 🏆", // 90%
-      "Só mais um empurrãozinho! 🤯", // 95%
-      "Perfeito! Você atingiu a meta! 💯🎉" // 100%
+      "Cada cliente é uma chance de cadastro. Vamos começar! 🤔", // 0%
+      "O primeiro passo foi dado. Qual a sua estratégia para o próximo? 🌱", // 5%
+      "Bom começo. O que podemos fazer para que mais clientes se cadastrem? 💡", // 10%
+      "Continue. Pense em como tornar o cadastro uma vantagem para o cliente. 🧐", // 15%
+      "Você está no caminho. Lembre-se, cada 'não' é um passo para o 'sim'. 💪", // 20%
+      "Um quarto do caminho. O que funcionou até agora? Vamos repetir! 🔥", // 25%
+      "Continue focado. A persistência é a chave do sucesso. 🎯", // 30%
+      "Bom progresso! Como podemos transformar o cadastro em um hábito? 🏃‍♂️", // 35%
+      "Falta pouco para a metade! O que pode ser melhorado no seu argumento? 💬", // 40%
+      "Alerta! Estamos quase na metade, mas podemos mais. O que está te impedindo? ⚠️", // 45%
+      "Metade do caminho! 🎉 Ótimo! Agora vamos dobrar. Qual o plano?", // 50%
+      "Excelente! Você está mostrando como se faz. 🌟", // 55%
+      "Seu esforço está dando resultado! Continue assim. 🚀", // 60%
+      "Mais da metade! O sucesso está na consistência. 🙌", // 65%
+      "Uau! Que resultado. Você está inspirando a equipe! 💥", // 70%
+      "Parabéns! Cada cadastro fortalece nossa relação com o cliente. 📈", // 75%
+      "Impressionante! Você está fazendo a diferença. 🙏", // 80%
+      "Reta final para a excelência! Continue com essa energia. 🏁", // 85%
+      "Incrível! Seu desempenho é um exemplo para todos. 🏆", // 90%
+      "Quase perfeito! Você domina a arte do cadastro. 🤯", // 95%
+      "Fantástico! Você mostrou que é possível. 💯🎉" // 100%
     ];
 
     const index = Math.min(Math.floor(p / 5), messages.length - 1);
     return messages[index];
-    
+
   }, [percentage, totalSales, identifiedSales]);
 
   useEffect(() => {
