@@ -48,34 +48,42 @@ export default function Home() {
 
   const motivationalMessage = useMemo(() => {
     const p = parseFloat(percentage);
-    if (isNaN(p) || p < 0 || totalSales === '' || identifiedSales === '') return '';
-
-    const messages = [
-      "Cada cliente é uma chance de cadastro. Vamos começar! 🤔", // 0%
-      "O primeiro passo foi dado. Qual a sua estratégia para o próximo? 🌱", // 5%
-      "Bom começo. O que podemos fazer para que mais clientes se cadastrem? 💡", // 10%
-      "Continue. Pense em como tornar o cadastro uma vantagem para o cliente. 🧐", // 15%
-      "Você está no caminho. Lembre-se, cada 'não' é um passo para o 'sim'. 💪", // 20%
-      "Um quarto do caminho. O que funcionou até agora? Vamos repetir! 🔥", // 25%
-      "Continue focado. A persistência é a chave do sucesso. 🎯", // 30%
-      "Bom progresso! Como podemos transformar o cadastro em um hábito? 🏃‍♂️", // 35%
-      "Falta pouco para a metade! O que pode ser melhorado no seu argumento? 💬", // 40%
-      "Alerta! Estamos quase na metade, mas podemos mais. O que está te impedindo? ⚠️", // 45%
-      "Metade do caminho! 🎉 Ótimo! Agora vamos dobrar. Qual o plano?", // 50%
-      "Excelente! Você está mostrando como se faz. 🌟", // 55%
-      "Seu esforço está dando resultado! Continue assim. 🚀", // 60%
-      "Mais da metade! O sucesso está na consistência. 🙌", // 65%
-      "Uau! Que resultado. Você está inspirando a equipe! 💥", // 70%
-      "Parabéns! Cada cadastro fortalece nossa relação com o cliente. 📈", // 75%
-      "Impressionante! Você está fazendo a diferença. 🙏", // 80%
-      "Reta final para a excelência! Continue com essa energia. 🏁", // 85%
-      "Incrível! Seu desempenho é um exemplo para todos. 🏆", // 90%
-      "Quase perfeito! Você domina a arte do cadastro. 🤯", // 95%
-      "Fantástico! Você mostrou que é possível. 💯🎉" // 100%
+    if (isNaN(p) || totalSales === '' || identifiedSales === '') return '';
+    
+    const lowMessages = [
+      "Hoje não foi nosso melhor dia… mas o próximo pode ser! Bora virar esse jogo 🏆.",
+      "Ainda estamos aquecendo… amanhã é hora de mostrar o que a gente sabe 💪.",
+      "Ficamos abaixo do que podemos, mas cada cliente de amanhã já está esperando por nós 😉.",
+      "A meta é sempre superar ontem. Amanhã temos mais uma chance 🔄.",
+      "Se fosse corrida, ainda estaríamos no pelotão de trás… bora acelerar 🚀."
     ];
 
-    const index = Math.min(Math.floor(p / 5), messages.length - 1);
-    return messages[index];
+    const mediumMessages = [
+        "Bom trabalho hoje! Mas sei que dá pra buscar ainda mais amanhã 😉.",
+        "Estamos no caminho certo! Bora colocar mais gás nessa máquina 💨.",
+        "Ótimo resultado! Mas ainda não é nosso teto 🏗️.",
+        "Demos um passo grande hoje. Amanhã é para dar um salto 🦘.",
+        "O time tá ligado! Amanhã é o dia de brilhar ainda mais ✨."
+    ];
+
+    const highMessages = [
+        "Show de bola! Hoje foi um dia de campeão 🏆.",
+        "Meta? Ultrapassada com estilo 😎.",
+        "Arrebentamos hoje! Que venha o próximo recorde 📈.",
+        "Equipe afiada, resultado brilhante ✨.",
+        "Dia de vitória! Amanhã tem replay 🎯."
+    ];
+
+    let messagePool = [];
+    if (p < 50) {
+        messagePool = lowMessages;
+    } else if (p >= 50 && p < 75) {
+        messagePool = mediumMessages;
+    } else {
+        messagePool = highMessages;
+    }
+
+    return messagePool[Math.floor(Math.random() * messagePool.length)];
 
   }, [percentage, totalSales, identifiedSales]);
 
