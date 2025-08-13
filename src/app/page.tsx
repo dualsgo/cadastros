@@ -89,10 +89,10 @@ export default function Home() {
     <main className="flex flex-col items-center justify-center min-h-screen bg-background p-4 sm:p-6 md:p-8">
       <Card className="w-full max-w-2xl shadow-2xl">
         <CardHeader className="text-center">
-          <CardTitle className="text-4xl font-headline font-bold">Acompanhamento cadastros</CardTitle>
-          <CardDescription className="text-lg">Acompanhamento diário de resultados</CardDescription>
+          <CardTitle className="text-3xl sm:text-4xl font-headline font-bold">Acompanhamento cadastros</CardTitle>
+          <CardDescription className="text-md sm:text-lg">Acompanhamento diário de resultados</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-8">
+        <CardContent className="space-y-6 sm:space-y-8">
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name" className="text-base">Nome do colaborador</Label>
@@ -134,27 +134,27 @@ export default function Home() {
           
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-base">
-                <Info className="mr-2 h-5 w-5" /> Como encontrar as vendas identificadas?
+              <AccordionTrigger className="text-sm sm:text-base text-left">
+                <Info className="mr-2 h-5 w-5 flex-shrink-0" /> Como encontrar as vendas identificadas?
               </AccordionTrigger>
-              <AccordionContent className="text-base text-muted-foreground pl-2 border-l-2 ml-2">
+              <AccordionContent className="text-sm sm:text-base text-muted-foreground pl-2 border-l-2 ml-2">
                 Ao final do expediente, abra o histórico de vendas do sistema e verifique quantos atendimentos possuem a identificação do cliente (CPF, nome ou cadastro).
               </AccordionContent>
             </AccordionItem>
           </Accordion>
 
-          <div className="text-center bg-card p-6 rounded-lg border">
-            <p className="text-lg text-muted-foreground">Seu aproveitamento de vendas identificadas é de:</p>
-            <p className="text-6xl font-bold text-primary drop-shadow-sm">{percentage}%</p>
+          <div className="text-center bg-card p-4 sm:p-6 rounded-lg border">
+            <p className="text-md sm:text-lg text-muted-foreground">Seu aproveitamento de vendas identificadas é de:</p>
+            <p className="text-5xl sm:text-6xl font-bold text-primary drop-shadow-sm">{percentage}%</p>
           </div>
 
           <Button
             onClick={handleGenerateMessage}
             disabled={!isFormValid}
-            className="w-full text-lg py-6"
+            className="w-full text-md sm:text-lg py-5 sm:py-6"
             size="lg"
           >
-            <MessageSquare className="mr-2 h-6 w-6" />
+            <MessageSquare className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
             Gerar Mensagem
           </Button>
 
@@ -165,7 +165,7 @@ export default function Home() {
                 id="generated-message"
                 readOnly
                 value={generatedMessage}
-                rows={6}
+                rows={5}
                 className="text-base bg-muted"
               />
               <Button onClick={handleCopyMessage} className="w-full" variant="secondary">
@@ -175,7 +175,7 @@ export default function Home() {
             </div>
           )}
         </CardContent>
-        <CardFooter className="flex-col items-center justify-center text-center text-muted-foreground text-sm">
+        <CardFooter className="flex-col items-center justify-center text-center text-muted-foreground text-xs sm:text-sm">
            <p>Após copiar, cole a mensagem no grupo da loja no WhatsApp.</p>
            <p>Lembre-se: este é um acompanhamento diário para celebrarmos juntos nossas conquistas!</p>
         </CardFooter>
