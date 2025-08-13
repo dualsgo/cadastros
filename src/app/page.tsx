@@ -57,7 +57,7 @@ export default function Home() {
   }, [name, totalSales, identifiedSales]);
 
   const handleGenerateMessage = () => {
-    const message = `✨ Relatório Diário - ${name} ✨\n\n- Vendas Totais: ${totalSales}\n- Vendas Identificadas: ${identifiedSales}\n- Aproveitamento: ${percentage}%\n\n#AcompanhamentoDiario`;
+    const message = `✨ Cadastros - ${name} ✨\n\n- Vendas: ${totalSales}\n- Identificadas: ${identifiedSales}\n- Aproveitamento: ${percentage}%`;
     setGeneratedMessage(message);
     setIsCopied(false);
   };
@@ -89,7 +89,7 @@ export default function Home() {
     <main className="flex flex-col items-center justify-center min-h-screen bg-background p-4 sm:p-6 md:p-8">
       <Card className="w-full max-w-2xl shadow-2xl">
         <CardHeader className="text-center">
-          <CardTitle className="text-4xl font-headline font-bold">Sales Tracker Chat</CardTitle>
+          <CardTitle className="text-4xl font-headline font-bold">Acompanhamento cadastros</CardTitle>
           <CardDescription className="text-lg">Acompanhamento diário de resultados</CardDescription>
         </CardHeader>
         <CardContent className="space-y-8">

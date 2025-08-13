@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Sales Tracker Chat',
+  title: 'Acompanhamento cadastros',
   description: 'Acompanhamento diário de resultados',
 };
 
