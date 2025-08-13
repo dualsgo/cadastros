@@ -48,14 +48,35 @@ export default function Home() {
 
   const motivationalMessage = useMemo(() => {
     const p = parseFloat(percentage);
-    if (isNaN(p) || p < 0 || (totalSales === '' && identifiedSales === '')) return '';
-    if (p === 0) return "Vamos começar! O primeiro passo é o mais importante. 🚀";
-    if (p > 0 && p <= 25) return "Continue assim! Cada cadastro conta. 💪";
-    if (p > 25 && p <= 50) return "Bom trabalho! Você está na metade do caminho. 🔥";
-    if (p > 50 && p <= 75) return "Excelente! Seus resultados estão decolando. ✈️";
-    if (p > 75 && p < 100) return "Incrível! Você está quase lá. 🌟";
-    if (p >= 100) return "Perfeito! Você atingiu a meta! 🏆🎉";
-    return '';
+    if (isNaN(p) || p < 0 || totalSales === '' || identifiedSales === '') return '';
+
+    const messages = [
+      "Vamos começar! O primeiro passo é o mais importante. 🚀", // 0%
+      "Isso! O primeiro de muitos. 🌱", // 5%
+      "Continue assim! Cada cadastro conta. 💪", // 10%
+      "Você está pegando o jeito! ✨", // 15%
+      "Ótimo começo! Mantenha o foco. 👀", // 20%
+      "Bom trabalho! Você está no caminho certo. 🔥", // 25%
+      "Um terço do caminho! 🎉", // 30%
+      "Quase na metade! Não desista agora. 🏃‍♂️", // 35%
+      "Continue brilhando! 🌟", // 40%
+      "Você é imparável! 👊", // 45%
+      "Metade do caminho! Você consegue. 🎯", // 50%
+      "Impressionante! Continue com o ótimo trabalho. 🤩", // 55%
+      "Seus resultados estão decolando! ✈️", // 60%
+      "Mais um pouco e você chega lá! 🙌", // 65%
+      "Uau! Que desempenho. 💥", // 70%
+      "Excelente! Você está fazendo a diferença. 📈", // 75%
+      "Quase lá! Falta muito pouco. 🙏", // 80%
+      "Na reta final! Capricha! 🏁", // 85%
+      "Incrível! Você está prestes a bater a meta. 🏆", // 90%
+      "Só mais um empurrãozinho! 🤯", // 95%
+      "Perfeito! Você atingiu a meta! 💯🎉" // 100%
+    ];
+
+    const index = Math.min(Math.floor(p / 5), messages.length - 1);
+    return messages[index];
+    
   }, [percentage, totalSales, identifiedSales]);
 
   useEffect(() => {
